@@ -6,7 +6,7 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 15:11:05 by vorhansa          #+#    #+#             */
-/*   Updated: 2025/09/09 16:33:43 by vorhansa         ###   ########.fr       */
+/*   Updated: 2025/09/15 13:32:04 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_itoa(int n)
 		dgt++;
 	}
 	str = (char *)malloc(sizeof(char) * (dgt + 1));
-	if(!str)
+	if (!str)
 		return (NULL);
 	str[dgt] = '\0';
 	while (dgt--)

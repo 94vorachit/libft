@@ -6,7 +6,7 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:15:00 by vorhansa          #+#    #+#             */
-/*   Updated: 2025/09/12 14:19:12 by vorhansa         ###   ########.fr       */
+/*   Updated: 2025/09/15 15:09:14 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,12 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	size_t			i;
 
 	i = 0;
-	if (nmemb == __SIZE_MAX__ || size == __SIZE_MAX__)
-		return (NULL);
-	if (nmemb < 0 || size < 0)
+	if (nmemb == 0 || size == 0)
+	{
+		nmemb = 1;
+		size = 1;
+	}
+	if ((((size_t)-1) / nmemb <= size) || (((size_t)-1) / size <= nmemb))
 		return (NULL);
 	tmp = malloc(nmemb * size);
 	if (!tmp)

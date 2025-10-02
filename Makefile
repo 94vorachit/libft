@@ -6,7 +6,7 @@
 #    By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/09 18:00:13 by vorhansa          #+#    #+#              #
-#    Updated: 2025/09/10 15:37:42 by vorhansa         ###   ########.fr        #
+#    Updated: 2025/09/15 16:45:24 by vorhansa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libft.a
 CFLAGS = -Wall -Werror -Wextra
 CC = gcc
 
-SRCS	= ft_atoi.c \
+MAN_SRCS	= ft_atoi.c \
 	ft_bzero.c \
 	ft_calloc.c \
 	ft_isalnum.c \
@@ -48,17 +48,29 @@ SRCS	= ft_atoi.c \
 	ft_substr.c \
 	ft_strtrim.c \
 	ft_tolower.c \
-	ft_toupper.c
+	ft_toupper.c \
+
+BONUS_SRCS = ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
+			ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
 	
-OBJS	= $(SRCS:%.c=%.o)
+MAN_OBJS	= $(MAN_SRCS:%.c=%.o)
+
+BONUS_OBJS	= $(BONUS_SRCS:%.c=%.o)
 
 all:	$(NAME)
 
-$(NAME):	$(OBJS)
-	ar -rcs $(NAME) $(OBJS)
+# 	* ar ~create our file
+# 	* -r ~"read" adds or modifies an already created file
+# 	* -c ~suppress air message in terminal
+#	* -s ~"refresh explorer"
+$(NAME):	$(MAN_OBJS)
+	ar -rcs $(NAME) $(MAN_OBJS)
+
+bonus:	$(BONUS_OBJS)
+	ar -rcs $(NAME) $(BONUS_OBJS)
 
 clean:
-	rm -rf $(OBJS)
+	rm -rf $(MAN_OBJS) $(BONUS_OBJS) 
 
 fclean: clean
 	rm -f $(NAME)
